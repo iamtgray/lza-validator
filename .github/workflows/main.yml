@@ -13,7 +13,7 @@ env:
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
-  build-and-push-image:
+  build-lza-validator:
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
@@ -22,6 +22,9 @@ jobs:
       attestations: write
       id-token: write
       # 
+    outputs:
+      repository-registry: ${{ env.REGISTRY }}
+      repository-image-name: ${{ github.repository }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
